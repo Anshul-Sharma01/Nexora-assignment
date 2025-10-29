@@ -22,7 +22,7 @@ const Header = () => {
               </svg>
             </div>
             <span className="text-xl font-bold text-black hidden sm:block">
-              Shop
+              Vibe Commerce
             </span>
           </Link>
           
