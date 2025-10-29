@@ -1,16 +1,79 @@
-# React + Vite
+# Vibe Commerce Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based e-commerce cart application built with Redux Toolkit for state management.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Authentication**: Login/Signup with JWT tokens
+- **Product Display**: Grid layout with images, descriptions, and prices
+- **Shopping Cart**: Add/remove items with quantity management
+- **Protected Routes**: Cart and checkout require authentication
+- **Checkout Process**: Mock payment with receipt generation
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **State Management**: Redux Toolkit for global state
+- **Routing**: React Router for navigation
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Redux Toolkit for state management
+- React Router for routing
+- Tailwind CSS for styling
+- Vite for build tooling
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Start the development server:
+```bash
+npm run dev
+```
+
+3. Make sure your backend is running on `http://localhost:3000`
+
+## API Integration
+
+The frontend expects the following backend endpoints:
+- `POST /api/v1/auth/login` - User login
+- `POST /api/v1/auth/signup` - User registration
+- `GET /api/v1/products` - Fetch products
+- `GET /api/v1/cart` - Get cart items (protected)
+- `POST /api/v1/cart` - Add item to cart (protected)
+- `DELETE /api/v1/cart/:id` - Remove item from cart (protected)
+- `POST /api/v1/checkout` - Process checkout (protected)
+
+## Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── ProductGrid.jsx  # Products display with images
+│   ├── Cart.jsx         # Shopping cart
+│   ├── CheckoutForm.jsx # Checkout form
+│   ├── ReceiptModal.jsx # Order receipt
+│   ├── Header.jsx       # Navigation header
+│   └── ProtectedRoute.jsx # Route protection
+├── pages/              # Page components
+│   ├── Shop.jsx        # Main shopping page
+│   ├── Login.jsx       # Login page
+│   └── Signup.jsx      # Registration page
+├── store/              # Redux store
+│   ├── store.js        # Store configuration
+│   ├── authSlice.js    # Authentication state
+│   ├── cartSlice.js    # Cart state management
+│   └── productsSlice.js # Products state management
+├── App.jsx             # Main app with routing
+└── main.jsx            # App entry point
+```
+
+## Usage
+
+1. **Authentication**: Users must sign up or log in to access the shop
+2. **Shopping**: Browse products with images and descriptions
+3. **Cart Management**: Add items to cart, view totals, remove items
+4. **Checkout**: Complete purchase with customer details
+5. **Receipt**: View order confirmation after successful checkout

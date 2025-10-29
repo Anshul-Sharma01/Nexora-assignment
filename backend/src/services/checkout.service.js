@@ -1,5 +1,5 @@
-import { CartItem } from "../models/CartItem.js";
-import { Product } from "../models/Product.js";
+import { CartItem } from "../models/cartItem.model.js";
+import { Product } from "../models/Product.model.js";
 
 export class CheckoutService {
   async checkout(userId, cartItems) {
@@ -15,20 +15,20 @@ export class CheckoutService {
     for (const item of items) {
       const product = item.productId ? item.productId : await Product.findById(item.productId);
       if (!product) continue;
-      const subtotal = product.price * item.quantity;
+      const qty = item.qty || item.quantity;
+      const subtotal = product.price * qty;
       total += subtotal;
       receiptItems.push({
         name: product.name,
-        quantity: item.quantity,
+        qty: qty,
         price: product.price,
-        subtotal,
       });
     }
 
     await CartItem.deleteMany({ userId });
 
     return {
-      userId,
+      orderId: `ORDER-${Date.now()}`,
       items: receiptItems,
       total: Number(total.toFixed(2)),
       timestamp: new Date().toISOString(),

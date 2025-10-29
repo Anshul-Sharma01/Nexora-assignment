@@ -5,12 +5,19 @@ import { Product } from "../models/Product.model.js";
 
 export class CartService{
     async getCart(userId){
-        const cart = await CartItem.find({ userId }).populate("productId");
-        const total = cart.reduce(
-            (sum, item) => sum + item.productId.price * item.quantity,
+        const cartItems = await CartItem.find({ userId }).populate("productId");
+        const items = cartItems.map(item => ({
+            id: item._id,
+            name: item.productId.name,
+            price: item.productId.price,
+            qty: item.quantity,
+            productId: item.productId._id
+        }));
+        const total = items.reduce(
+            (sum, item) => sum + item.price * item.qty,
             0
         );
-        return { cart, total };
+        return { items, total };
     }
 
     async addToCart(userId, productId, quantity){
@@ -18,10 +25,13 @@ export class CartService{
         if(existingItem){
             existingItem.quantity += quantity;
             await existingItem.save();
-            return existingItem;
+        } else {
+            const newItem = new CartItem({ userId, productId, quantity });
+            await newItem.save();
         }
-        const newItem = new CartItem({ userId, productId, quantity : qty });
-        return await newItem.save();
+        
+        // Return updated cart
+        return await this.getCart(userId);
     }
 
     async removeFromCart(userId, itemId){

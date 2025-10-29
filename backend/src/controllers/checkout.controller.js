@@ -1,4 +1,4 @@
-import { CheckoutService } from "../services/CheckoutService.js";
+import { CheckoutService } from "../services/checkout.service.js";
 
 export class CheckoutController {
   constructor() {
