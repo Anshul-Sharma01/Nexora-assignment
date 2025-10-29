@@ -245,11 +245,11 @@ Process checkout
 
 
 ## UI Snapshots 
-<img src="./image-1.png"  />
-<img src="./image.png"  />
-<img src="./image-2.png"  />
-<img src="./image-3.png"  />
-<img src="./image-4.png"  />
+<img src="https://res.cloudinary.com/dqnzstk72/image/upload/v1761750282/Nexorra/Screenshot_2025-10-29_192531_kjopkb.png" alt="UI Screenshot 3" />
+<img src="https://res.cloudinary.com/dqnzstk72/image/upload/v1761750282/Nexorra/Screenshot_2025-10-29_192515_kfzjzm.png" alt="UI Screenshot 4" />
+<img src="https://res.cloudinary.com/dqnzstk72/image/upload/v1761750298/Nexorra/Screenshot_2025-10-29_192649_oukmfa.png" alt="UI Screenshot 2" />
+<img src="https://res.cloudinary.com/dqnzstk72/image/upload/v1761750298/Nexorra/Screenshot_2025-10-29_192659_y4auca.png" alt="UI Screenshot 1" />
+<img src="https://res.cloudinary.com/dqnzstk72/image/upload/v1761750292/Nexorra/Screenshot_2025-10-29_192707_tu9dyw.png" alt="UI Screenshot" />
 
 
 ## 🎨 UI Components
